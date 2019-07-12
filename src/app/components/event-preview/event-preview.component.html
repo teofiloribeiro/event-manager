@@ -1,0 +1,33 @@
+<div class="eventCard shadow m-5">
+    <div class="eventCardTitle">
+        <div class='title' data-toggle="tooltip" data-placement="top" title={{tip}}>
+            {{eventTitle}}
+        </div>
+    </div>
+
+    <div class="eventCardBody">
+        <div>
+            <label>Date: </label>
+            {{eventDate | date: 'shortDate'}} 
+        </div>
+        <div>
+            <label>Days Left: </label>
+            {{daysLeft}}
+        </div>
+        <div>
+            <label>Guests: </label>
+            {{totalGuests}}
+        </div>
+        <div>
+            <label>Guests Confirmed:</label>
+            {{confirmedGuests}}
+        </div>
+        <div>
+            <label>City:</label>
+            {{city}}
+        </div>
+    </div>
+</div>
+
+<!-- <app-event-preview [eventDate] = 'paramentro
+    '></app-event-preview> -->

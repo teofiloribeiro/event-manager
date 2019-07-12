@@ -1,0 +1,36 @@
+.eventCard{
+    width: 250px;
+    border: 8px solid  rgb(202, 202, 202);
+    border-left: 1px;
+    border-top: 1px;
+    border-radius: 15px;
+    padding: 2px;
+    background-color: rgba(202, 202, 202, 0.897);
+    float: left
+    
+}
+.eventCardTitle{
+    width: 230px;
+    height: 70px;
+    border-bottom: 3px  solid gray;
+    margin: auto;
+    margin-top: 5px;
+    padding: 2px;
+    word-break:break-word;
+}
+.title{
+    font-size: 21px;
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+    
+}
+.eventCardBody{
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid rgba(202, 202, 202, 0.897);
+    background-color: rgb(190, 190, 190);
+}
+.eventCardBody label{
+    font-weight: bold;
+}

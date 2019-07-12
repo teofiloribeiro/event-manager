@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="card mt-200p shadow">
+        <div>
+            <h2 class= "text-center login-title">Welcome to Manage Events!</h2>
+        </div>
+        <div class="card-body">
+            <form  #loginForm = "ngForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="email" class="my-0">Email</label>
+                    <input ngModel id="email" name="email" type="email" class="form-control my-0">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="my-0">Password</label>
+                    <input ngModel id="password" name="password" type="password" class="form-control my-0">
+                </div>
+                <button type="submit" class="btn btn-primary mt-0">Log In</button>
+                <button style="float:right" class="btn btn-primary mt-0">Sign up</button>
+            </form>
+            <a style="float:right" href="duahsdu.com">forgot my password</a>
+        </div>
+    </div>
+</div>
