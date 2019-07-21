@@ -1,3 +1,4 @@
+import { EventsComponent } from './events.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from "@angular/core";
 //import { RouterModule } from '@angular/router';
@@ -16,6 +17,7 @@ import { EventsRoutingModule } from './events-routing.module';
     ],
     exports: [],
     declarations: [
+        EventsComponent,
         EventFormComponent,
         EventPreviewComponent
     ],

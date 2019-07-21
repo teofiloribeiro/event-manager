@@ -5,7 +5,7 @@ import { EventFormComponent } from './event-form/event-form.component';
 import { EventsComponent } from './events.component';
 
 const eventsRoutes: Routes = [
-  {path:'events', component: EventsComponent},
+  {path:'', component: EventsComponent},
   {path:'new', component: EventFormComponent}
 ];
 
