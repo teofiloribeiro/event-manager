@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { User } from './../../model/user';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -9,9 +10,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent {
   // private auth: FormControl;
-
-  email = '';
-  password = '';
+  private user: User = new User();
   constructor(private authService: AuthService) {}
 
   // loginForm = this._fb.group({
@@ -20,12 +19,11 @@ export class LoginComponent {
   // })
 
   onSubmit() {
-    console.log(this.password);
-    this.authService.login(this.email, this.password)
-    .subscribe(
-      data => console.log ('suscess', data),
-      error => console.log ('error', error)
-    );
+    this.authService.login(this.user.userName, this.user.password)
+    // .subscribe(
+    //   data => console.log ('suscess', data),
+    //   error => console.log ('error', error)
+    // );
   }
 
 }

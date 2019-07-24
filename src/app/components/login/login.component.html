@@ -7,11 +7,11 @@
             <form  #loginForm = "ngForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="email" class="my-0">Email</label>
-                    <input ngModel id="email" name="email" type="email" class="form-control my-0">
+                    <input [(ngModel)]="user.userName" id="email" name="userName" type="email" class="form-control my-0">
                 </div>
                 <div class="form-group">
                     <label for="password" class="my-0">Password</label>
-                    <input ngModel id="password" name="password" type="password" class="form-control my-0">
+                    <input [(ngModel)]="user.password" id="password" name="user.password" type="password" class="form-control my-0">
                 </div>
                 <button  type="submit" class="btn btn-primary mt-0">Log In</button>
                 <button style="float:right" class="btn btn-primary mt-0">Sign up</button>
