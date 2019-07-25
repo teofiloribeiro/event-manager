@@ -9,11 +9,13 @@ import { AppComponent } from './app.component';
 import { LoginModule } from './components/login/login.module';
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
