@@ -4,16 +4,24 @@
             <h2 class= "text-center login-title">Welcome to Manage Events!</h2>
         </div>
         <div class="card-body">
-            <form  #loginForm = "ngForm" (ngSubmit)="onSubmit()">
+            <form  #loginForm = "ngForm" (ngSubmit)="onSubmit(loginForm)">
                 <div class="form-group">
                     <label for="email" class="my-0">Email</label>
-                    <input [(ngModel)]="user.userName" id="email" name="userName" type="email" class="form-control my-0">
+                    <input ngModel #email = "ngModel" id="email" name="email" type="email" class="form-control my-0" 
+                    [class.is-invalid] = "!email.valid && email.touched" email required>
+                    <div class= invalid-feedback>
+                        Please, enter a valid email!
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="password" class="my-0">Password</label>
-                    <input [(ngModel)]="user.password" id="password" name="user.password" type="password" class="form-control my-0">
+                    <input ngModel #password= "ngModel" id="password" name="password" type="password" class="form-control is-invalid my-0"
+                    [class.is-invalid] = "!password.valid && password.touched" required>
+                    <div class= invalid-feedback>
+                        Password is required!
+                    </div>
                 </div>
-                <button  type="submit" class="btn btn-primary mt-0">Log In</button>
+                <button type="submit" class="btn btn-primary mt-0">Log In</button>
                 <button style="float:right" class="btn btn-primary mt-0">Sign up</button>
             </form>
             <a routerLink=""  style="float:right">forgot my password</a>
