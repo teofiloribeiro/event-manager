@@ -8,7 +8,7 @@
                 <div class="form-group">
                     <label for="email" class="my-0">Email</label>
                     <input ngModel #email = "ngModel" id="email" name="email" type="email" class="form-control my-0" 
-                    [class.is-invalid] = "!email.valid && email.touched" email required>
+                    [class.is-invalid] = "!email.valid && loginForm.submitted" email required>
                     <div class= invalid-feedback>
                         Please, enter a valid email!
                     </div>
@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <label for="password" class="my-0">Password</label>
                     <input ngModel #password= "ngModel" id="password" name="password" type="password" class="form-control is-invalid my-0"
-                    [class.is-invalid] = "!password.valid && password.touched" required>
+                    [class.is-invalid] = "!password.valid && loginForm.submitted" required>
                     <div class= invalid-feedback>
                         Password is required!
                     </div>

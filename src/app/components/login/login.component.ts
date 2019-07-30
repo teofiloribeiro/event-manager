@@ -20,7 +20,7 @@ export class LoginComponent {
 
   onSubmit(form) {
     console.log(form);
-    //this.authService.login(this.user.userName, this.user.password)
+    this.authService.login(this.user.userName, this.user.password)
     // .subscribe(
     //   data => console.log ('suscess', data),
     //   error => console.log ('error', error)

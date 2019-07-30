@@ -7,13 +7,16 @@ import { NgModule } from "@angular/core";
 import { EventFormComponent } from './event-form/event-form.component';
 import { EventPreviewComponent } from './event-preview/event-preview.component';
 import { EventsRoutingModule } from './events-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
     imports: [
         CommonModule,
-        EventsRoutingModule
+        EventsRoutingModule,
+         FormsModule
+        
     ],
     exports: [],
     declarations: [

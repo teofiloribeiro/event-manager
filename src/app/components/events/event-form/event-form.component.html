@@ -1,2 +1,51 @@
-<p>event-form works!</p>
-<p>forms works</p>
+<div class= "container">
+    <form #eventForm= "ngForm" (ngSubmit) = "onSubimit(eventForm)">
+        <h3>About your event</h3>
+
+        <div class="form-group">
+            <label for="title"> Event Title </label>
+            <input ngModel #title="ngModel" name="title" class= "form-control"> 
+        </div>
+        
+        <div class="form-group">
+            <label for="description"> Description </label>
+            <input ngModel #description="ngModel" name="description" class= "form-control"> 
+        </div>
+        <div class="form-group">
+            <label for="date"> Date </label>
+            <input type= "date" ngModel #date="ngModel" name="eventDate"  class= "form-control"> 
+        </div>
+
+        
+        <h3>Localization</h3>
+        <div class="form-group">
+            <label for="postalCode"> Postal Code </label>
+            <input ngModel #postalCode="ngModel" name="postalCode" class= "form-control"> 
+        </div>
+        <div class="form-group">
+            <label for="number"> Number </label>
+            <input ngModel #number="ngModel" name="number" class= "form-control"> 
+        </div>
+        <div class="form-group">
+            <label for="street"> Street </label>
+            <input ngModel #street="ngModel" name="street" class= "form-control" readonly> 
+        </div>
+        <div class="form-group">
+            <label for="neighborhood"> Neighborhood </label>
+            <input ngModel #neighborhood="ngModel" name="neighborhood" class= "form-control" readonly>  
+        </div>
+        <div class="form-group">
+            <label for="city"> City </label>
+            <input ngModel #city="ngModel" name="city" class= "form-control" readonly> 
+        </div>
+        <div class="form-group">
+            <label for="state"> State </label>
+            <input ngModel #state="ngModel" name="state" class= "form-control" readonly> 
+        </div>
+
+       
+
+    </form>
+
+    <div class="mapView"></div>
+</div>
