@@ -8,6 +8,7 @@ import { EventFormComponent } from './event-form/event-form.component';
 import { EventPreviewComponent } from './event-preview/event-preview.component';
 import { EventsRoutingModule } from './events-routing.module';
 import { FormsModule } from '@angular/forms';
+import { LocalizationService } from 'src/app/services/localization.service';
 
 
 
@@ -15,16 +16,17 @@ import { FormsModule } from '@angular/forms';
     imports: [
         CommonModule,
         EventsRoutingModule,
-         FormsModule
-        
+        FormsModule      
     ],
     exports: [],
     declarations: [
         EventsComponent,
         EventFormComponent,
-        EventPreviewComponent
+        EventPreviewComponent        
     ],
-    providers: [],
+    providers: [
+        LocalizationService
+    ],
 })
 
 export class EventsModule{}
