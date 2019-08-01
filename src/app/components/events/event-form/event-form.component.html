@@ -1,11 +1,12 @@
 <div class="container">
-    <form #eventForm="ngForm" (ngSubmit)="onSubimit(eventForm)">
+    <form [formGroup]= "eventForm" (ngSubmit)="onSubmit()">
         <h3>About your event</h3>
 
         <div class="form-group">
             <label for="title"> Event Title </label>
-            <input ngModel #title="ngModel" name="title" class="form-control"
-                [class.is-invalid]="!title.valid && (title.touched || eventForm.submitted)" required>
+            <input formControlName="title" class="form-control"
+            [class.is-invalid]="!eventForm.get('title').valid && (eventForm.get('title').touched || eventForm.submitted)"
+            >
             <div class=invalid-feedback>
                 Title is required!
             </div>
@@ -14,14 +15,14 @@
             <div class="col-lg-9 col-12">
                 <div class="form-group">
                     <label for="description"> Description </label>
-                    <input ngModel #description="ngModel" name="description" class="form-control">
+                    <input formControlName="description" class="form-control">
                 </div>
             </div>
             <div class="col-lg-3 col-12 col-md-5">
                 <div class="form-group">
                     <label for="date"> Date </label>
-                    <input type="date" ngModel #date="ngModel" name="date" class="form-control"
-                        [class.is-invalid]="!date.valid && (date.touched || eventForm.submitted)" required>
+                    <input type="date" formControlName="date" class="form-control" 
+                    [class.is-invalid]="!eventForm.get('date').valid && (eventForm.get('date').touched || eventForm.submitted)">
                     <div class=invalid-feedback>
                         Date is required!
                     </div>
@@ -30,14 +31,14 @@
         </div>
 
         <h3>Local</h3>
-        <div ngModelGroup="address">
+        <div formGroupName="address">
             <div class="row">
                 <div class="col-lg-2 col-6">
                     <div class="form-group">
                         <label for="postalCode"> Postal Code </label>
-                        <input ngModel #postalCode="ngModel" name="postalCode" class="form-control"
-                            (blur)="consultPostalCode($event.target.value, eventForm)"
-                            [class.is-invalid]="!postalCode.valid && (postalCode.touched || eventForm.submitted)" required>
+                        <input formControlName="postalCode" class="form-control"
+                            (blur)="consultPostalCode()"
+                            [class.is-invalid]="!eventForm.get('address.postalCode').valid && (eventForm.get('address.postalCode').touched || eventForm.submitted)">
                         <div class=invalid-feedback>
                             An address is required!
                         </div>
@@ -46,8 +47,8 @@
                 <div class="col-lg-2 col-6">
                     <div class="form-group">
                         <label for="number"> Number </label>
-                        <input ngModel #number="ngModel" name="number" class="form-control"
-                            [class.is-invalid]="!number.valid && (number.touched || eventForm.submitted)" required>
+                        <input formControlName="number" class="form-control"
+                            [class.is-invalid]="!eventForm.get('address.number').valid && (eventForm.get('address.number').touched || eventForm.submitted)">
                         <div class=invalid-feedback>
                             Number is required or use <b>N/A</b> if don't have one!
                         </div>
@@ -56,7 +57,7 @@
                 <div class="col-lg-8 col-12">
                     <div class="form-group">
                         <label for="street"> Street </label>
-                        <input ngModel #street="ngModel" name="street" class="form-control" readonly>
+                        <input formControlName="street" class="form-control" readonly>
                     </div>
                 </div>
             </div>
@@ -64,24 +65,24 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="form-group">
                         <label for="neighborhood"> Neighborhood </label>
-                        <input ngModel #neighborhood="ngModel" name="neighborhood" class="form-control" readonly>
+                        <input formControlName="neighborhood" class="form-control" readonly>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="form-group">
                         <label for="city"> City </label>
-                        <input ngModel #city="ngModel" name="city" class="form-control" readonly>
+                        <input formControlName="city" class="form-control" readonly>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
                         <label for="state"> State </label>
-                        <input ngModel #state="ngModel" name="state" class="form-control" readonly>
+                        <input formControlName="state" class="form-control" readonly>
                     </div>
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary float-right"> Next </button>
+        <button type="submit" class="btn btn-primary float-right"> Next </button> 
 
     </form>
 
