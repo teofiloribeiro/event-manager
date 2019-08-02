@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {map} from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +20,7 @@ export class LocalizationService {
   }
 
   findUsingPostalCode(postalCode){
-    return this.http.get(`//viacep.com.br/ws/${postalCode}/json`)
-    .pipe(map(data => data));
+    return this.http.get(`//viacep.com.br/ws/${postalCode}/json`);
       
   }
 }
