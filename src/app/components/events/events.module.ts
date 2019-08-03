@@ -8,8 +8,6 @@ import { EventFormComponent } from './event-form/event-form.component';
 import { EventPreviewComponent } from './event-preview/event-preview.component';
 import { EventsRoutingModule } from './events-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LocalizationService } from 'src/app/services/localization.service';
-
 
 
 @NgModule({
@@ -25,9 +23,7 @@ import { LocalizationService } from 'src/app/services/localization.service';
         EventFormComponent,
         EventPreviewComponent        
     ],
-    providers: [
-        LocalizationService
-    ],
+    providers: [],
 })
 
 export class EventsModule{}

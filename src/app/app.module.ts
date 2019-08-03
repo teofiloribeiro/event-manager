@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AuthGuard } from './guards/auth.guard';
@@ -10,6 +10,7 @@ import { LoginModule } from './components/login/login.module';
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { TokenInteceptorService } from './interceptor/token-inteceptor.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,13 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     LoginModule,
     AppRoutingModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [
+    AuthService, 
+    AuthGuard, 
+    {
+      provide: HTTP_INTERCEPTORS, useClass: TokenInteceptorService, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

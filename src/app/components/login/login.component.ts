@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
-import { User } from './../../model/user';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -8,21 +7,29 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
-  // private auth: FormControl;
-  private user: User = new User();
-  constructor(private authService: AuthService) {}
+export class LoginComponent implements OnInit{
+  loginForm: FormGroup;
+  constructor(
+    private authService: AuthService,
+    private formBuilder: FormBuilder
+    ) {}
 
-  // loginForm = this._fb.group({
-  //   email: [''],
-  //   password: ['']
-  // })
+  ngOnInit(){
+    this.loginForm = this.formBuilder.group({
+      email: [null, [Validators.required]],
+      password: [null, [Validators.required]]
+    })
+  }
 
-  onSubmit(form) {
-    console.log(form);
-    this.authService.login(this.user.userName, this.user.password)
+  onSubmit() {
+    console.log("submit: " + this.loginForm.value);
+    this.authService.login(this.loginForm.value)
+    
     // .subscribe(
-    //   data => console.log ('suscess', data),
+    //   data => {
+    //     console.log ('suscess', data)
+        
+    //   },
     //   error => console.log ('error', error)
     // );
   }

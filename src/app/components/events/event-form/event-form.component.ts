@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { LocalizationService } from './../../../services/localization.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { EventService } from 'src/app/services/event.service';
 
 @Component({
   selector: 'app-event-form',
@@ -14,7 +15,8 @@ export class EventFormComponent implements OnInit {
 
   constructor(
       private formBuilder: FormBuilder, 
-      private localizationService: LocalizationService
+      private localizationService: LocalizationService,
+      private eventService: EventService
     ) { }
 
   ngOnInit() {
@@ -23,14 +25,17 @@ export class EventFormComponent implements OnInit {
       title: [null, [Validators.required, Validators.maxLength(64)]],
       description: [null, Validators.maxLength(255)],
       date: [null, Validators.required],
-      address: this.formBuilder.group({
-        postalCode: [null, Validators.required],
-        number: [null, Validators.required],
-        street: [null],
-        neighborhood: [null],
-        city: [null],
-        state: [null]
-      })  
+      location: this.formBuilder.group({
+        address: this.formBuilder.group({
+          postalCode: [null, Validators.required],
+          number: [null, Validators.required],
+          street: [null],
+          neighborhood: [null],
+          city: [null],
+          state: [null]
+        })  
+      })
+      
     });
 
   }
@@ -40,7 +45,10 @@ export class EventFormComponent implements OnInit {
   onSubmit(){
     console.log(this.eventForm);
     if(this.eventForm.valid){
-      //submit code
+      this.eventService.createEvent(this.eventForm.value)
+      .subscribe(
+        res => console.log(res)
+      );
     }
     else{
      this.checkForm(this.eventForm)
@@ -60,19 +68,22 @@ export class EventFormComponent implements OnInit {
   }
 
   consultPostalCode(){
-    let postalCode = this.eventForm.get('address.postalCode').value;
+    let postalCode = this.eventForm.get('location.address.postalCode').value;
     this.localizationService.findUsingPostalCode(postalCode)
       .subscribe(data => this.setAddressDataOnForm(data))
     }
 
     setAddressDataOnForm(data){
       this.eventForm.patchValue({
-        address:{
-          street: data.logradouro,
-          neighborhood: data.bairro,
-          city: data.localidade,
-          state: data.uf
+        location:{
+          address:{
+            street: data.logradouro,
+            neighborhood: data.bairro,
+            city: data.localidade,
+            state: data.uf
+          }
         }
+       
       })
     }
 
