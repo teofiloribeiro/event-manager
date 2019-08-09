@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { delay, tap } from 'rxjs/operators';
 import { Event } from '../model/event';
+import { Guest } from '../model/guest';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,10 @@ export class EventService {
 
   createEvent(form){
     return this.http.post<any>(`${this.API}events`, form);
+  }
+
+  createGuest(guest: Guest, event){
+    
   }
 
 }

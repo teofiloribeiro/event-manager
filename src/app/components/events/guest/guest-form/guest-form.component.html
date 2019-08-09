@@ -1,0 +1,43 @@
+<form [formGroup]="guestForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-md-6 col-12">
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input formControlName="firstName" class="form-control"
+                    [class.is-invalid]="!guestForm.get('firstName').valid && guestForm.get('firstName').touched">
+                <div class=invalid-feedback>
+                    First Name is required!
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-12">
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input formControlName="lastName" class="form-control"
+                    [class.is-invalid]="!guestForm.get('lastName').valid && guestForm.get('lastName').touched">
+                <div class=invalid-feedback>
+                    Last Name is required!
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-12">
+            <div class="form-group">
+                <label for="mail">Email:</label>
+                <input formControlName="email" class="form-control"
+                    [class.is-invalid]="!guestForm.get('email').valid && guestForm.get('email').touched">
+                <div class=invalid-feedback>
+                    Email is required!
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-12">
+            <div class="form-group">
+                <label for="Phone">Phone:</label>
+                <input formControlName="phone" class="form-control">                    
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary float-right"> Invite </button>
+</form>
