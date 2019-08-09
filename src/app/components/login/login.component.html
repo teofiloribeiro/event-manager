@@ -1,30 +1,32 @@
-<div class="container">
+<div class="loginBox col-4 m-auto">
+
     <div class="card mt-200p shadow">
         <div>
-            <h2 class= "text-center login-title">Welcome to Manage Events!</h2>
+            <h2 class="text-center login-title">Welcome to Manage Events!</h2>
         </div>
         <div class="card-body">
-            <form  [formGroup] = "loginForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="email" class="my-0">Email</label>
-                    <input id="email" formControlName="email" type="email" class="form-control my-0" 
-                    [class.is-invalid] = "!loginForm.get('email').valid && loginForm.submitted" email required>
-                    <div class= invalid-feedback>
+                    <input id="email" formControlName="email" type="email" class="form-control my-0"
+                        [class.is-invalid]="!loginForm.get('email').valid && loginForm.submitted" email required>
+                    <div class=invalid-feedback>
                         Please, enter a valid email!
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="password" class="my-0">Password</label>
                     <input id="password" formControlName="password" type="password" class="form-control is-invalid my-0"
-                    [class.is-invalid] = "!loginForm.get('password').valid && loginForm.submitted" required>
-                    <div class= invalid-feedback>
+                        [class.is-invalid]="!loginForm.get('password').valid && loginForm.submitted" required>
+                    <div class=invalid-feedback>
                         Password is required!
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary mt-0">Log In</button>
                 <button style="float:right" class="btn btn-primary mt-0">Sign up</button>
             </form>
-            <a routerLink=""  style="float:right">forgot my password</a>
+            <a routerLink="" style="float:right">forgot my password</a>
         </div>
+        <h6 *ngIf = "loading">loading...</h6>
     </div>
 </div>

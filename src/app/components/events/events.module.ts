@@ -8,6 +8,7 @@ import { EventFormComponent } from './event-form/event-form.component';
 import { EventPreviewComponent } from './event-preview/event-preview.component';
 import { EventsRoutingModule } from './events-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GuestComponent } from './guest/guest.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     declarations: [
         EventsComponent,
         EventFormComponent,
-        EventPreviewComponent        
+        EventPreviewComponent,
+        GuestComponent        
     ],
     providers: [],
 })

@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { EventService } from 'src/app/services/event.service';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { Event } from 'src/app/model/event';
 
 @Component({
   selector: 'app-events',
@@ -7,14 +10,12 @@ import { EventService } from 'src/app/services/event.service';
   styleUrls: ['./events.component.scss']
 })
 export class EventsComponent implements OnInit {
-
+  @Input() events$: Observable<Event []>;
+  
   constructor(private eventService: EventService) { }
 
   ngOnInit() {
-    this.eventService.getEvents()
-    .subscribe(response => {
-      console.log(response)
-    })
+    console.log("CHAMOU")
+    this.events$ = this.eventService.getEvents();
   }
-
 }

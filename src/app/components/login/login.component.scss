@@ -1,11 +1,17 @@
 .mt-200p{
     margin-top: 200px
 }
-.container{
+.loginBox{
     min-width: 300px;
     max-width: 450px;
-
+    
 }
 .login-title{
     margin: 20px 5px 5px 5px
+}
+
+.loading{
+    min-width: 300px;
+    max-width: 850px;
+    background-color: black; 
 }

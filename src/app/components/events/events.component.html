@@ -1,1 +1,12 @@
-<app-event-preview></app-event-preview>
+<div *ngIf="events$ | async as events; else loading">
+    <div *ngFor="let event of events.events">
+       <app-event-preview [event] = "event"></app-event-preview>
+
+    </div>
+
+</div>
+<ng-template #loading>
+
+    <span>LOADING...</span>
+
+</ng-template>
