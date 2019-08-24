@@ -7,8 +7,8 @@ import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   { 
-    //path: 'events',
     path: 'events',
+    //path: 'events',
     loadChildren: 'src/app/components/events/events.module#EventsModule',
     //canActivate: [AuthGuard]
   },

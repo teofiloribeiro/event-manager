@@ -1,6 +1,7 @@
 import { Guest } from './guest';
 
 export interface Event{
+    _id: string,
     title: string;
     city: string;
     date: Date;

@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { LocalizationService } from './../../../services/localization.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EventService } from 'src/app/services/event.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Event } from 'src/app/model/event';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-event-form',
@@ -12,27 +16,50 @@ import { EventService } from 'src/app/services/event.service';
 export class EventFormComponent implements OnInit {
 
   eventForm: FormGroup;
+  testeDate: Date;
+  event: Event = null;
+  
 
   constructor(
       private formBuilder: FormBuilder, 
       private localizationService: LocalizationService,
-      private eventService: EventService
+      private eventService: EventService,
+      private route: ActivatedRoute,
+      private router: Router
     ) { }
 
   ngOnInit() {
+    
+    // console.log(event)
+    // console.log(event.date)
+    
+    // this.testeDate = new Date(event.date);
+    // console.log(this.testeDate.toUTCString)
+    
+    if(this.route.snapshot.routeConfig.path == 'edit' ){
+      this.route.paramMap
+      .pipe(map(()=> window.history.state))
+      .subscribe(
+        data => this.event = data.event
+      )
+      if (!this.event){
+        this.router.navigate(['events/new'])
+      }
+    }    
 
     this.eventForm = this.formBuilder.group({
-      title: [null, [Validators.required, Validators.maxLength(64)]],
-      description: [null, Validators.maxLength(255)],
-      date: [null, Validators.required],
+      _id:[this.event ? this.event._id : null],
+      title: [this.event ? this.event.title : null, [Validators.required, Validators.maxLength(64)]],
+      description: [this.event ? this.event.description : null, Validators.maxLength(255)],
+      date: [this.event ? this.event.date : null, Validators.required],
       location: this.formBuilder.group({
         address: this.formBuilder.group({
-          postalCode: [null, Validators.required],
-          number: [null, Validators.required],
-          street: [null],
-          neighborhood: [null],
-          city: [null],
-          state: [null]
+          postalCode: [this.event ? this.event.location.address.postalCode: null, Validators.required],
+          number: [this.event ? this.event.location.address.number: null, Validators.required],
+          street: [this.event ? this.event.location.address.street: null],
+          neighborhood: [this.event ? this.event.location.address.city: null],
+          city: [this.event ? this.event.location.address.city: null],
+          state: [this.event ? this.event.location.address.state: null]
         })  
       })
       
@@ -43,11 +70,14 @@ export class EventFormComponent implements OnInit {
 
 
   onSubmit(){
-    console.log(this.eventForm);
+    console.log("submit: "+this.eventForm.value);
     if(this.eventForm.valid){
-      this.eventService.createEvent(this.eventForm.value)
+      this.eventService.saveEvent(this.eventForm.value)
       .subscribe(
-        res => console.log(res)
+        res => {
+          console.log(res)
+          this.router.navigate(['events/guest'], {state: {event: this.event}})
+        }
       );
     }
     else{
@@ -86,25 +116,4 @@ export class EventFormComponent implements OnInit {
        
       })
     }
-
-
-
-
-  // onSubmit(form){}
-  // consultPostalCode(postalCode, eventForm){
-  //   console.log(eventForm)
-  //   this.localizationService.findUsingPostalCode(postalCode)
-  //     .subscribe(data => this.setAddressDataOnForm(data, eventForm))
-  // }
-  // setAddressDataOnForm(data, form){
-  //   form.form.patchValue({
-  //     address:{
-  //       street: data.logradouro,
-  //       neighborhood: data.bairro,
-  //       city: data.localidade,
-  //       state: data.uf
-  //     }
-  //   })
-  //  }
-
 }

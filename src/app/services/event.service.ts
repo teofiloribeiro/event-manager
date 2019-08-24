@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
-import { delay, tap } from 'rxjs/operators';
+import { delay, tap, take } from 'rxjs/operators';
 import { Event } from '../model/event';
 import { Guest } from '../model/guest';
 
@@ -26,12 +26,32 @@ export class EventService {
      );  
   }
 
-  createEvent(form){
+  private createEvent(form: Event){
     return this.http.post<any>(`${this.API}events`, form);
   }
 
-  createGuest(guest: Guest, event){
-    
+  getEventById(id: string){
+    return this.http.get<Event>(`${this.API}events/${id}`)
+  }
+
+  private updateEvent(form: Event){
+    console.log("kkk")
+    console.log(form)
+    return this.http.put<any>(`${this.API}events/${form._id}`, form)
+  }
+
+  saveEvent(event:Event){
+    if(event._id){
+      return this.updateEvent(event);
+    }
+    return this.createEvent(event);
+  }
+  createGuest(event:Event, guest: Guest){
+    console.log(event);
+    event.guest.push(guest);
+    console.log(event)
+    console.log(guest);
+    return this.updateEvent(event);
   }
 
 }

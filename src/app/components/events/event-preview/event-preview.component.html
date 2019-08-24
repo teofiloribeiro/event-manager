@@ -1,4 +1,64 @@
-<div class="eventCard shadow m-5">
+<div class="eventCard">
+    <div class="eventTitle" data-toggle="tooltip" data-placement="top" title={{tip}}>
+        <h2>{{ eventTitle }}</h2>
+        
+    </div>
+
+    <div class="cardBody">
+        <div class="cardDate">
+            <p class="day">
+                {{ eventDate | date: 'shortDate' }}
+            </p>
+            <p class="daysLeft">
+                {{ daysLeft }} days left!
+            </p>
+        </div>
+        <div class="cardInfo">
+            <div class="infoTitle">
+                <label> City </label>
+            </div>
+            <div class="infoData">
+                {{ city }}
+            </div>
+        </div>
+        <div class="cardInfo">
+            <div class="infoTitle">
+                <label> Guests </label>
+            </div>
+            <div class="infoData">
+                {{ totalGuests }}
+            </div>
+        </div>
+        <div class="cardInfo">
+            <div class="infoTitle">
+                <label> Guests confirmed </label>
+            </div>
+            <div class="infoData">
+                {{ confirmedGuests }}
+            </div>
+        </div>
+        <div class="buttons">
+            <button (click)="onEdit()" class="btn btn-light ml-2">E</button>
+            <button (click)="onInvite()" class="btn btn-light">G</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="eventCard shadow m-5">
     <div class="eventCardTitle">
         <div class='title' data-toggle="tooltip" data-placement="top" title={{tip}}>
             {{eventTitle}}
@@ -27,8 +87,9 @@
             {{city}}
         </div>
     </div>
-    
-</div>
+    <button (click)="onEdit()" class="btn btn-secondary float-right mx-1">E</button>
+    <button (click)="onInvite()" class="btn btn-secondary float-right">G</button>
+</div> -->
 
 <!-- <app-event-preview [eventDate] = 'paramentro
     '></app-event-preview> -->

@@ -1,3 +1,6 @@
+<h2 *ngIf= "event">You are editing: <b>{{ event.title }}! </b></h2>
+
+
 <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
     <h3>About your event</h3>
 
@@ -19,7 +22,7 @@
         <div class="col-lg-3 col-12 col-md-5">
             <div class="form-group">
                 <label for="date"> Date </label>
-                <input type="date" formControlName="date" class="form-control"
+                <input type="datetime-local" formControlName="date" class="form-control"
                     [class.is-invalid]="!eventForm.get('date').valid && (eventForm.get('date').touched || eventForm.submitted)">
                 <div class=invalid-feedback>
                     Date is required!

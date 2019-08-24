@@ -10,12 +10,11 @@ import { Event } from 'src/app/model/event';
   styleUrls: ['./events.component.scss']
 })
 export class EventsComponent implements OnInit {
-  @Input() events$: Observable<Event []>;
+  events$: Observable<Event []>;
   
   constructor(private eventService: EventService) { }
 
   ngOnInit() {
-    console.log("CHAMOU")
     this.events$ = this.eventService.getEvents();
   }
 }
