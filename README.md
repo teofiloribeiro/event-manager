@@ -1,4 +1,7 @@
 # MeetingsFront
+This is a simple project to manage any kind of events! This project is not finished yet!
+
+[EventsAPI](https://github.com/teofiloribeiro/eventsAPI) is an API used as backend.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.4.
 
